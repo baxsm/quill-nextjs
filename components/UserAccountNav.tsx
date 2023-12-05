@@ -1,3 +1,5 @@
+"use client";
+
 import { getUserSubscriptionPlan } from "@/lib/stripe";
 import { FC } from "react";
 import {
@@ -22,7 +24,7 @@ interface UserAccountNavProps {
   subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>;
 }
 
-const UserAccountNav: FC<UserAccountNavProps> = async ({
+const UserAccountNav: FC<UserAccountNavProps> = ({
   email,
   imageUrl,
   name,
@@ -82,7 +84,7 @@ const UserAccountNav: FC<UserAccountNavProps> = async ({
           )}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer" asChild>
           <LogoutLink>Log out</LogoutLink>
         </DropdownMenuItem>
       </DropdownMenuContent>
