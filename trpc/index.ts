@@ -43,6 +43,13 @@ export const appRouter = router({
       where: {
         userId: userId,
       },
+      include: {
+        messages: {
+          select: {
+            id: true,
+          },
+        },
+      },
     });
   }),
   getFileMessages: privateProcedure

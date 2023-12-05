@@ -9,9 +9,11 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { Button } from "./ui/button";
 
-interface DashboardProps {}
+interface DashboardProps {
+  isSubscribed: boolean;
+}
 
-const Dashboard: FC<DashboardProps> = ({}) => {
+const Dashboard: FC<DashboardProps> = ({isSubscribed}) => {
   const [currDeletingFile, setCurrDeletingFile] = useState<string>();
 
   const utils = trpc.useUtils();
@@ -34,7 +36,7 @@ const Dashboard: FC<DashboardProps> = ({}) => {
     <main className="mx-auto max-w-7xl md:p-10">
       <div className="mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0">
         <h1 className="mb-3 font-bold text-5xl text-gray-900">My Files</h1>
-        <UploadButton />
+        <UploadButton isSubscribed={isSubscribed}/>
       </div>
 
       {files && files.length !== 0 ? (
@@ -74,7 +76,7 @@ const Dashboard: FC<DashboardProps> = ({}) => {
                     </div>
                     <div className="flex items-center gap-2">
                       <MessageSquare className="h-4 w-4" />
-                      {/** TODO: Message count */}5
+                      {file.messages.length}
                     </div>
 
                     <Button

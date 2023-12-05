@@ -1,14 +1,15 @@
 "use client";
 
 import { FC } from "react";
-import MaxWidthWrapper from "./MaxWidthWrapper";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+import { buttonVariants } from "../ui/button";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 import { ArrowRight } from "lucide-react";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
-import UserAccountNav from "./UserAccountNav";
+import UserAccountNav from "../UserAccountNav";
 import { getUserSubscriptionPlan } from "@/lib/stripe";
+import MobileNav from "./MobileNav";
 
 interface NavbarLinksProps {
   user: KindeUser | null;
@@ -23,6 +24,7 @@ const NavbarLinks: FC<NavbarLinksProps> = ({ user, subscriptionPlan }) => {
           <span>quill.</span>
         </Link>
         {/** TODO: Mobile navbar */}
+        <MobileNav isAuth={!!user} />
         <div className="hidden items-center space-x-4 sm:flex">
           {!user ? (
             <>

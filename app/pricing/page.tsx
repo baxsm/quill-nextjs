@@ -177,7 +177,7 @@ const Page: FC<PageProps> = async ({}) => {
                   <div className="p-5">
                     {plan === "Free" ? (
                       <Link
-                        href={user ? "/dashboard" : "/sign-in"}
+                        href={user ? "/dashboard" : "/login"}
                         className={buttonVariants({
                           className: "w-full",
                           variant: "secondary",
@@ -190,7 +190,7 @@ const Page: FC<PageProps> = async ({}) => {
                       <UpgradeButton />
                     ) : (
                       <Link
-                        href="/sign-in"
+                        href="/login"
                         className={buttonVariants({
                           className: "w-full",
                         })}
