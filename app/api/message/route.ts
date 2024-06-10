@@ -42,6 +42,7 @@ export const POST = async (req: NextRequest) => {
 
   const embeddings = new OpenAIEmbeddings({
     openAIApiKey: process.env.OPENAI_API_KEY,
+    modelName: "text-embedding-3-small"
   });
 
   const pineconeIndex = pinecone.Index("quill");
@@ -69,7 +70,7 @@ export const POST = async (req: NextRequest) => {
   }));
 
   const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
+    model: "phi-3-mini-128k-instruct:free",
     temperature: 0,
     stream: true,
     messages: [
