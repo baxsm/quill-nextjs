@@ -42,7 +42,7 @@ export const POST = async (req: NextRequest) => {
 
   const embeddings = new OpenAIEmbeddings({
     openAIApiKey: process.env.OPENAI_API_KEY,
-    modelName: "text-embedding-3-small"
+    modelName: "text-embedding-3-small",
   });
 
   const pineconeIndex = pinecone.Index("quill");
